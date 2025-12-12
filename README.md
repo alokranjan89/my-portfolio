@@ -1,16 +1,92 @@
-# React + Vite
+# 🚀 Personal Portfolio – Alok Ranjan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website!
+This portfolio showcases my **skills**, **projects**, and **experience** as a **Software Developer**, specializing in:
 
-Currently, two official plugins are available:
+* **Python & AI**
+* **Machine Learning**
+* **Full-Stack Development**
+* **Cloud & DevOps**
+* **React.js**
+* **Docker & Kubernetes**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 **Live Portfolio:** [https://alokranjan.vercel.app/](https://alokranjan.vercel.app/)
+🔗 **GitHub:** [https://github.com/alokranjan89](https://github.com/alokranjan89)
+🔗 **LinkedIn:** [https://www.linkedin.com/in/alok-ranjan-546015290/](https://www.linkedin.com/in/alok-ranjan-546015290/)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+* 🌌 **Animated Particle Background**
+* 🧑‍💻 **Hero Section with Typewriter Effect**
+* 👤 **About Me Section with Profile Image**
+* 💼 **Featured Projects Section**
+* ⚡ **Skills Grid with Hover Effects**
+* 📞 **Contact Section with Buttons**
+* 📱 **Fully Responsive**
+* 🚀 **Fast Deployment on Vercel**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+
+* React.js
+* Tailwind CSS
+* Framer Motion
+* Typewriter.js
+* tsparticles
+
+### **DevOps & Deployment**
+
+* Vercel
+* GitHub
+
+---
+
+## 📌 Projects Shown in Portfolio
+
+### **1. Smart Attendance System (AI + DevOps + React Dashboard)**
+
+* Python, OpenCV, Liveness Detection
+* Node.js + MongoDB backend
+* React dashboard
+* Dockerized and deployed on Kubernetes
+* GitHub: [https://github.com/alokranjan89/Smart-Attendance-System](https://github.com/alokranjan89/Smart-Attendance-System)
+
+### **2. Interviewly (AI Interview Question Generator)**
+
+* Next.js + React + Tailwind
+* Google Generative AI API integration
+* GitHub: [https://github.com/alokranjan89/interviewly](https://github.com/alokranjan89/interviewly)
+
+---
+
+## 📷 About Me
+
+I am **Alok Ranjan**, a passionate Software Developer who enjoys building:
+
+* Intelligent AI-driven systems
+* Modern full-stack applications
+* Scalable cloud-native solutions
+* Automated DevOps pipelines
+
+---
+
+## 📞 Contact
+
+If you'd like to collaborate or discuss opportunities:
+
+* ✉️ **Email:** [alokr5393@gmail.com](mailto:alokr5393@gmail.com)
+* 💼 **LinkedIn:** [https://www.linkedin.com/in/alok-ranjan-546015290/](https://www.linkedin.com/in/alok-ranjan-546015290/)
+* 🐙 **GitHub:** [https://github.com/alokranjan89](https://github.com/alokranjan89)
+
+---
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+Just say **“make my README more advanced”** or **“add screenshots”**.
