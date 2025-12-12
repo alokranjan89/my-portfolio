@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* small global tweaks */
+:root {
+  --cy-cyan: #00d9ff;
+  --cy-purple: #7b2cff;
+  --bg-dark: #050508;
+}
+
+html, body, #root { height: 100%; }
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1000px 600px at 10% 20%, rgba(0,217,255,0.03), transparent),
+              radial-gradient(900px 600px at 90% 80%, rgba(124,44,255,0.03), transparent),
+              var(--bg-dark);
+  color: #e6eef4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Nice neon button glow */
+.btn-neon {
+  background: linear-gradient(90deg,var(--cy-cyan), #12d0f2);
+  color: #001;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px 28px;
+  box-shadow: 0 20px 40px rgba(0,217,255,0.08), 0 8px 18px rgba(124,44,255,0.03);
+}
+
+/* 3D card tilt-ish */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-3d:hover {
+  transform: translateY(-8px) rotateX(4deg) rotateY(-6deg) scale(1.015);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 8px 32px rgba(0,217,255,0.06);
+}
+
+/* small utilities */
+.backdrop-glass { background: rgba(6,6,12,0.45); backdrop-filter: blur(8px); }
