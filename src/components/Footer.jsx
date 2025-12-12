@@ -1,34 +1,36 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="py-10 bg-black border-t border-neutral-800 text-center text-neutral-400 relative z-10">
-      <p className="text-lg">© 2025 Alok Ranjan</p>
-      <p className="text-sm mt-1">Built with React + Tailwind CSS + Framer Motion</p>
+    <footer className="py-8 bg-black text-white text-center border-t border-white/10">
+      <p className="mb-4 text-lg font-semibold">Connect with me</p>
 
-      <div className="flex justify-center gap-6 mt-4 text-neutral-300 text-xl">
-        <a
-          href="mailto:alokr5393@gmail.com"
-          className="hover:text-cyan-400 transition"
-        >
-          <FaEnvelope />
-        </a>
+      <div className="flex justify-center gap-6">
+        
+        {/* GitHub */}
         <a
           href="https://github.com/alokranjan89"
           target="_blank"
-          className="hover:text-cyan-400 transition"
+          rel="noopener noreferrer"
+          className="hover:text-cyan-400"
         >
-          <FaGithub />
+          GitHub
         </a>
+
+        {/* LinkedIn — FIXED */}
         <a
-          href="https://www.linkedin.com/in/alok-ranjan89/"
+          href="https://www.linkedin.com/in/alokranjan89/"
           target="_blank"
-          className="hover:text-cyan-400 transition"
+          rel="noopener noreferrer"
+          className="hover:text-cyan-400"
         >
-          <FaLinkedin />
+          LinkedIn
         </a>
       </div>
+
+      <p className="mt-4 text-sm text-white/60">
+        © {new Date().getFullYear()} Alok Ranjan — All Rights Reserved.
+      </p>
     </footer>
   );
 }
