@@ -9,14 +9,11 @@ export default function Footer() {
         Built with React + Tailwind CSS + Framer Motion
       </p>
 
-      {/* Social Icons */}
       <div className="flex justify-center gap-6 mt-5 text-2xl">
-        
         {/* Email */}
         <a
           href="mailto:alokr5393@gmail.com"
           className="hover:text-cyan-400 transition"
-          aria-label="Email"
         >
           <FaEnvelope />
         </a>
@@ -27,22 +24,19 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-cyan-400 transition"
-          aria-label="GitHub"
         >
           <FaGithub />
         </a>
 
-        {/* LinkedIn — FIXED */}
+        {/* LinkedIn */}
         <a
-          href="https://www.linkedin.com/in/alok-ranjan89/"
+          href="https://www.linkedin.com/in/alokranjan89/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-cyan-400 transition"
-          aria-label="LinkedIn"
         >
           <FaLinkedin />
         </a>
-
       </div>
     </footer>
   );
