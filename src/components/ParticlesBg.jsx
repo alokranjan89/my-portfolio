@@ -1,41 +1,31 @@
-import React from "react";
-import { Particles } from "@tsparticles/react";
-import { loadFull } from "@tsparticles/engine";
+import React, { useCallback } from "react";
+import Particles from "@tsparticles/react";
+import { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 export default function ParticlesBg() {
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
+  React.useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine); // load the slim bundle
+    });
+  }, []);
+
+  const particlesOptions = {
+    background: {
+      color: "transparent",
+    },
+    particles: {
+      number: { value: 40 },
+      size: { value: 3 },
+      links: {
+        enable: true,
+        color: "#00eaff",
+      },
+      move: { enable: true },
+    },
   };
 
   return (
-    <Particles
-      id="tsparticles"
-      init={particlesInit}
-      options={{
-        fullScreen: { enable: true, zIndex: 0 },
-        background: { color: "#050508" },
-
-        particles: {
-          number: { value: 60, density: { enable: true, area: 800 } },
-          color: { value: ["#00d9ff", "#7b2cff", "#6ee7b7"] },
-          shape: { type: "circle" },
-          opacity: { value: 0.06, random: true },
-          size: { value: { min: 1, max: 8 } },
-          move: { enable: true, speed: 0.4, random: true },
-          links: { enable: true, distance: 160, color: "#0ff", opacity: 0.04 },
-        },
-
-        interactivity: {
-          events: {
-            onHover: { enable: true, mode: "repulse" },
-            onClick: { enable: true, mode: "push" },
-          },
-          modes: {
-            repulse: { distance: 120 },
-            push: { quantity: 2 },
-          },
-        },
-      }}
-    />
+    <Particles id="tsparticles" options={particlesOptions} />
   );
 }
