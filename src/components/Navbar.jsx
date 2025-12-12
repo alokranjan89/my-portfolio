@@ -1,66 +1,83 @@
-import React from "react";
-import clsx from "clsx";
+import React, { useState } from "react";
+import { Menu, X } from "lucide-react";
 import profilePic from "../assets/profile.jpeg";
 
-export default function Navbar({ theme, setTheme, active }) {
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const navItems = [
+    { name: "Home", link: "#home" },
+    { name: "Projects", link: "#projects" },
+    { name: "Skills", link: "#skills" },
+    { name: "Contact", link: "#contact" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-glass border-b border-white/10">
-      <div className="flex items-center justify-between px-12 py-4">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-black/20 border-b border-white/10">
+      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
 
-        {/* LEFT SIDE: PHOTO + LOGO */}
-        <div className="flex items-center gap-4">
-          <img
-            src={profilePic}
-            alt="Alok Ranjan"
-            className="w-12 h-12 rounded-full object-cover border-2 border-cyan-400 shadow-lg hover:scale-105 transition cursor-pointer"
-          />
-
-          <div className="text-white font-extrabold text-2xl cursor-pointer">
+        {/* Logo + Profile */}
+        <div className="flex items-center gap-2">
+          <img src={profilePic} className="h-10 w-10 rounded-full border border-cyan-400" />
+          <h1 className="text-xl font-bold text-white">
             Alok<span className="text-cyan-400">Dev</span>
-          </div>
+          </h1>
         </div>
 
-        {/* RIGHT SIDE: NAV LINKS */}
-        <div className="flex items-center gap-8">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8 text-white">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.link}
+              className="hover:text-cyan-400 transition"
+            >
+              {item.name}
+            </a>
+          ))}
 
+          {/* Resume Button */}
           <a
-            className="text-white hover:text-cyan-400 transition"
-            href="#home"
-          >
-            Home
-          </a>
-
-          <a
-            className="text-white hover:text-cyan-400 transition"
-            href="#projects"
-          >
-            Projects
-          </a>
-
-          <a
-            className="text-white hover:text-cyan-400 transition"
-            href="#skills"
-          >
-            Skills
-          </a>
-
-          <a
-            className="text-white hover:text-cyan-400 transition"
-            href="#contact"
-          >
-            Contact
-          </a>
-
-          {/* RESUME BUTTON */}
-          <a
-            href="/Alok_Ranjan_Resume.pdf"
-            download
-            className="ml-4 px-5 py-2 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition shadow-lg"
+            href="/resume.pdf"
+            target="_blank"
+            className="px-4 py-2 bg-cyan-400 text-black rounded-lg font-semibold"
           >
             Resume
           </a>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {/* Mobile Dropdown */}
+      {open && (
+        <div className="md:hidden bg-black/80 border-t border-white/10 px-6 py-4 space-y-4">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.link}
+              onClick={() => setOpen(false)}
+              className="block text-white text-lg hover:text-cyan-400"
+            >
+              {item.name}
+            </a>
+          ))}
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            className="block w-full text-center px-4 py-2 bg-cyan-400 text-black rounded-lg font-semibold"
+          >
+            Resume
+          </a>
+        </div>
+      )}
     </nav>
   );
 }

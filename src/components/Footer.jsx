@@ -22,7 +22,7 @@ export default function Footer() {
           <FaGithub />
         </a>
         <a
-          href="https://linkedin.com/in/alok-ranjan"
+          href="https://www.linkedin.com/in/alok-ranjan89/"
           target="_blank"
           className="hover:text-cyan-400 transition"
         >
