@@ -84,9 +84,3 @@ If you'd like to collaborate or discuss opportunities:
 * 🐙 **GitHub:** [https://github.com/alokranjan89](https://github.com/alokranjan89)
 
 ---
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-Just say **“make my README more advanced”** or **“add screenshots”**.
