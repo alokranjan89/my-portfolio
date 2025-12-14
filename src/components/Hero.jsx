@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import ParticlesBg from "./ParticlesBg";
 
 export default function Hero() {
   const titles = [
@@ -14,10 +13,9 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Typewriter effect logic
   useEffect(() => {
     const currentText = titles[index];
-    let typingSpeed = isDeleting ? 50 : 100;
+    const speed = isDeleting ? 50 : 100;
 
     const timer = setTimeout(() => {
       setDisplayText(
@@ -32,64 +30,51 @@ export default function Hero() {
         setIsDeleting(false);
         setIndex((prev) => (prev + 1) % titles.length);
       }
-    }, typingSpeed);
+    }, speed);
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index, titles]);
+  }, [displayText, isDeleting, index]);
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center pb-40"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-black"
     >
-      <ParticlesBg />
-
-      <div className="container mx-auto px-8 text-center z-20">
+      <div className="max-w-4xl px-6 text-center z-10">
         <motion.h1
-          initial={{ opacity: 0, y: -18 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
-          className="text-6xl md:text-7xl font-extrabold"
+          transition={{ duration: 0.8 }}
+          className="text-5xl md:text-7xl font-extrabold"
         >
           <span className="text-white">Hi, I'm</span>{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
             Alok Ranjan
           </span>
         </motion.h1>
 
-        <motion.h2
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="mt-6 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
+          className="mt-6 text-xl text-gray-300"
         >
           I build intelligent applications using{" "}
-          <span className="text-cyan-300 font-semibold">
-            {displayText}
-            <span className="blinking-cursor">|</span>
+          <span className="text-cyan-400 font-semibold">
+            {displayText}|
           </span>
-        </motion.h2>
+        </motion.p>
 
         <motion.a
           href="#projects"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="mt-10 inline-block btn-neon"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1 }}
+          className="inline-block mt-10 px-8 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300"
         >
           View My Work
         </motion.a>
       </div>
-
-      {/* Scroll Down Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 0 }}
-        animate={{ opacity: 1, y: 15 }}
-        transition={{ duration: 1.2, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute bottom-10 text-cyan-300 text-lg cursor-pointer z-20"
-      >
-        ↓ Scroll Down
-      </motion.div>
     </section>
   );
 }
