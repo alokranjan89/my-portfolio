@@ -46,3 +46,8 @@ body {
 
 /* small utilities */
 .backdrop-glass { background: rgba(6,6,12,0.45); backdrop-filter: blur(8px); }
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
