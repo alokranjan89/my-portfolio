@@ -24,6 +24,13 @@ const projects = [
   tags: ["React", "Node.js", "Express", "MongoDB", "MERN", "Tailwind"],
   link: "https://github.com/alokranjan89/quickshow"
 },
+{
+  title: "Sweet Shop Management System",
+  desc:
+    "A full-stack web application designed to manage sweet shop inventory and operations. Features include adding, updating, deleting sweets, searching by category, price management, and stock tracking. Built using the MERN stack with RESTful APIs and a responsive UI.",
+  tags: ["MERN Stack", "React", "Node.js", "Express", "MongoDB"],
+  link: "https://github.com/alokranjan89/sweet-shop-management"
+},
 ];
 
 export default function Projects() {
