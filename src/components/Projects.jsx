@@ -17,6 +17,13 @@ const projects = [
     tags: ["Python", "OpenCV", "Flask", "Node.js", "MongoDB", "Docker", "Kubernetes"],
     link: "https://github.com/alokranjan89/Smart-Attendance-System",
   },
+  {
+  title: "QuickShow – Movie Ticket Booking Platform",
+  desc:
+    "Full-stack MERN web application for booking movie tickets online. Features include movie listings, showtime management, seat selection, and admin dashboard for adding movies and shows. Built with React, Node.js, Express, and MongoDB with secure REST APIs.",
+  tags: ["React", "Node.js", "Express", "MongoDB", "MERN", "Tailwind"],
+  link: "https://github.com/alokranjan89/quickshow"
+},
 ];
 
 export default function Projects() {
