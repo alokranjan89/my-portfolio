@@ -3,7 +3,18 @@ import { motion } from "framer-motion";
 import { 
   FaPython, FaReact, FaNodeJs, FaDocker, FaGitAlt, FaAws 
 } from "react-icons/fa";
-import { SiMongodb, SiKubernetes, SiJavascript, SiMysql, SiCplusplus, SiHtml5, SiCss3, SiGithubactions, SiSqlite } from "react-icons/si";
+
+import {
+  SiMongodb,
+  SiKubernetes,
+  SiJavascript,
+  SiMysql,
+  SiCplusplus,
+  SiHtml5,
+  SiCss3,
+  SiGithubactions,
+  SiSqlite
+} from "react-icons/si";
 
 const skills = [
   { name: "Python", icon: <FaPython size={26} /> },
@@ -16,44 +27,48 @@ const skills = [
   { name: "Node.js", icon: <FaNodeJs size={26} /> },
   { name: "MySQL", icon: <SiMysql size={26} /> },
   { name: "MongoDB", icon: <SiMongodb size={26} /> },
-  { name: "AWS (S3, EC2, IAM)", icon: <FaAws size={26} /> },
+  { name: "AWS", icon: <FaAws size={26} /> },
   { name: "Docker", icon: <FaDocker size={26} /> },
   { name: "Kubernetes", icon: <SiKubernetes size={26} /> },
   { name: "Git/GitHub", icon: <FaGitAlt size={26} /> },
-  { name: "GitHub Actions (CI/CD)", icon: <SiGithubactions size={26} /> },
+  { name: "GitHub Actions", icon: <SiGithubactions size={26} /> },
 ];
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-28 px-6 bg-black bg-[radial-gradient(circle_at_center,rgba(0,217,255,0.06),transparent_70%)] relative z-10"
+      className="py-24 px-6 bg-gradient-to-b from-black via-slate-900 to-black"
     >
       <div className="max-w-6xl mx-auto text-center">
-        
+
+        {/* Section Title */}
         <motion.h2
-          className="text-5xl font-extrabold mb-14 text-white drop-shadow-[0_0_15px_rgba(0,255,255,0.4)]"
+          className="text-4xl md:text-5xl font-extrabold mb-14 text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Skills
+          My <span className="text-cyan-400">Skills</span>
         </motion.h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {skills.map((skill, i) => (
+        {/* Skills Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+
+          {skills.map((skill) => (
             <motion.div
-              key={i}
+              key={skill.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.08, boxShadow: "0 0 25px rgba(0,255,255,0.3)" }}
+              whileHover={{ y: -6, scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className="p-5 rounded-xl bg-neutral-900/60 border border-cyan-400/20 text-neutral-200 shadow-lg backdrop-blur-md flex flex-col items-center gap-3"
+              className="p-6 rounded-xl bg-neutral-900 border border-white/10 text-neutral-200 shadow-lg hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all flex flex-col items-center gap-3"
             >
-              <div className="text-cyan-300">{skill.icon}</div>
+              <div className="text-cyan-400">{skill.icon}</div>
               <p className="font-medium">{skill.name}</p>
             </motion.div>
           ))}
+
         </div>
       </div>
     </section>

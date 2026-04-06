@@ -23,7 +23,8 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Disabled because core ESLint cannot reliably track JSX usage without eslint-plugin-react.
+      'no-unused-vars': 'off',
     },
   },
 ])

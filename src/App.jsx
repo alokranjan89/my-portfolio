@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -8,21 +8,30 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
-  const [theme, setTheme] = useState("dark");
-
   return (
-    <div className="min-h-screen bg-black">
-      <Navbar theme={theme} setTheme={setTheme} />
+    <div className="min-h-screen text-white">
 
-      <main>
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Main Content */}
+      <main className="flex flex-col">
+
         <Hero />
+
         <About />
+
         <Projects />
+
         <Skills />
+
         <Contact />
+
       </main>
 
+      {/* Footer */}
       <Footer />
+
     </div>
   );
 }

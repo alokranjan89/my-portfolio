@@ -4,15 +4,6 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
-    id: 1,
-    title: "Interviewly – AI Interview Generator",
-    desc:
-      "AI-based web app that generates personalized interview questions using Google Generative AI API. Built with Next.js, React, Tailwind CSS with React Hook Form + Zod validation.",
-    tags: ["Next.js", "React", "Tailwind", "Google AI", "Zod"],
-    github: "https://github.com/alokranjan89/interviewly",
-    live: "",
-  },
-  {
     id: 2,
     title: "Smart Attendance System",
     desc:
@@ -27,16 +18,25 @@ const projects = [
       "Kubernetes",
     ],
     github: "https://github.com/alokranjan89/Smart-Attendance-System",
-    live: "",
+    live: "https://smart-attendance-system32.vercel.app",
   },
   {
     id: 3,
-    title: "QuickShow – Movie Ticket Booking",
+    title: "QuickShow - Movie Ticket Booking",
     desc:
       "Full-stack MERN application for booking movie tickets with movie listings, seat selection, admin dashboard and secure REST APIs.",
     tags: ["React", "Node.js", "Express", "MongoDB", "MERN"],
     github: "https://github.com/alokranjan89/quickshow",
-    live: "",
+    live: "https://quickshow0.vercel.app",
+  },
+  {
+    id: 5,
+    title: "Nightshield",
+    desc:
+      "Security-focused web application for monitoring suspicious activity and improving incident response with a clean, real-time dashboard experience.",
+    tags: ["React", "Node.js", "Express", "MongoDB", "Security"],
+    github: "https://github.com/alokranjan89/nightshield",
+    live: "https://nightshield08.vercel.app",
   },
   {
     id: 4,
@@ -49,45 +49,57 @@ const projects = [
   },
 ];
 
+const orderedProjects = [...projects].sort((a, b) => {
+  const aHasLive = Boolean(a.live);
+  const bHasLive = Boolean(b.live);
+  if (aHasLive === bHasLive) return a.id - b.id;
+  return bHasLive - aHasLive;
+});
+
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 px-6 bg-black relative z-10">
+    <section
+      id="projects"
+      className="py-20 px-6 bg-gradient-to-b from-black via-slate-900 to-black relative"
+    >
       <div className="max-w-6xl mx-auto">
 
         {/* Title */}
         <motion.h2
-          className="text-4xl font-extrabold text-center mb-10 text-white drop-shadow-[0_0_10px_rgba(0,255,255,0.4)]"
+          className="text-4xl md:text-5xl font-extrabold text-center mb-14 text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Projects
+          My <span className="text-cyan-400">Projects</span>
         </motion.h2>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((p) => (
+        <div className="grid md:grid-cols-2 gap-8">
+          {orderedProjects.map((p) => (
             <motion.div
               key={p.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="p-5 rounded-xl bg-neutral-900/60 border border-cyan-300/20 backdrop-blur-xl shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-400 transition-all"
+              transition={{ duration: 0.4 }}
+              className="p-6 rounded-xl bg-neutral-900/70 border border-white/10 backdrop-blur-lg shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-400 transition-all"
             >
+
               {/* Title */}
-              <h3 className="text-xl font-bold text-cyan-300">
+              <h3 className="text-xl font-bold text-cyan-400">
                 {p.title}
               </h3>
 
               {/* Description */}
-              <p className="text-neutral-300 mt-2 text-sm leading-relaxed">
+              <p className="text-neutral-300 mt-3 text-sm leading-relaxed">
                 {p.desc}
               </p>
 
               {/* Tags */}
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {p.tags.map((tag) => (
                   <span
                     key={tag}
@@ -99,7 +111,7 @@ export default function Projects() {
               </div>
 
               {/* Buttons */}
-              <div className="mt-4 flex gap-3 flex-wrap">
+              <div className="mt-5 flex gap-3 flex-wrap">
                 <a
                   href={p.github}
                   target="_blank"
@@ -133,6 +145,7 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

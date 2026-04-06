@@ -4,49 +4,73 @@ html {
   scroll-behavior: smooth;
 }
 
-
-/* small global tweaks */
+/* Global variables */
 :root {
   --cy-cyan: #00d9ff;
   --cy-purple: #7b2cff;
   --bg-dark: #050508;
 }
 
-html, body, #root { height: 100%; }
+html, body, #root {
+  height: 100%;
+}
+
+/* MAIN BACKGROUND (clean gradient instead of weird radial glow) */
 body {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: radial-gradient(1000px 600px at 10% 20%, rgba(0,217,255,0.03), transparent),
-              radial-gradient(900px 600px at 90% 80%, rgba(124,44,255,0.03), transparent),
-              var(--bg-dark);
+
+  background: linear-gradient(
+    180deg,
+    #050508 0%,
+    #0b0f1a 50%,
+    #050508 100%
+  );
+
   color: #e6eef4;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Nice neon button glow */
+/* Neon button */
 .btn-neon {
-  background: linear-gradient(90deg,var(--cy-cyan), #12d0f2);
+  background: linear-gradient(90deg, var(--cy-cyan), #12d0f2);
   color: #001;
   font-weight: 700;
   border-radius: 12px;
   padding: 12px 28px;
-  box-shadow: 0 20px 40px rgba(0,217,255,0.08), 0 8px 18px rgba(124,44,255,0.03);
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 10px 30px rgba(0,217,255,0.2),
+    0 4px 10px rgba(124,44,255,0.1);
 }
 
-/* 3D card tilt-ish */
+.btn-neon:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* 3D card hover effect */
 .card-3d {
   transform-style: preserve-3d;
   perspective: 1200px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 .card-3d:hover {
-  transform: translateY(-8px) rotateX(4deg) rotateY(-6deg) scale(1.015);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 8px 32px rgba(0,217,255,0.06);
+  transform: translateY(-6px) rotateX(3deg) rotateY(-3deg) scale(1.02);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.6),
+    0 6px 20px rgba(0,217,255,0.06);
 }
 
-/* small utilities */
-.backdrop-glass { background: rgba(6,6,12,0.45); backdrop-filter: blur(8px); }
+/* Glass effect */
+.backdrop-glass {
+  background: rgba(6,6,12,0.45);
+  backdrop-filter: blur(8px);
+}
 
+/* Prevent horizontal scroll */
 html, body {
   width: 100%;
   overflow-x: hidden;
