@@ -1,74 +1,122 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  FaPython, FaReact, FaNodeJs, FaDocker, FaGitAlt, FaAws 
-} from "react-icons/fa";
 
-import {
-  SiMongodb,
-  SiKubernetes,
-  SiJavascript,
-  SiMysql,
-  SiCplusplus,
-  SiHtml5,
-  SiCss3,
-  SiGithubactions,
-  SiSqlite
-} from "react-icons/si";
-
-const skills = [
-  { name: "Python", icon: <FaPython size={26} /> },
-  { name: "C++", icon: <SiCplusplus size={26} /> },
-  { name: "JavaScript", icon: <SiJavascript size={26} /> },
-  { name: "HTML", icon: <SiHtml5 size={26} /> },
-  { name: "CSS", icon: <SiCss3 size={26} /> },
-  { name: "SQL", icon: <SiSqlite size={26} /> },
-  { name: "React", icon: <FaReact size={26} /> },
-  { name: "Node.js", icon: <FaNodeJs size={26} /> },
-  { name: "MySQL", icon: <SiMysql size={26} /> },
-  { name: "MongoDB", icon: <SiMongodb size={26} /> },
-  { name: "AWS", icon: <FaAws size={26} /> },
-  { name: "Docker", icon: <FaDocker size={26} /> },
-  { name: "Kubernetes", icon: <SiKubernetes size={26} /> },
-  { name: "Git/GitHub", icon: <FaGitAlt size={26} /> },
-  { name: "GitHub Actions", icon: <SiGithubactions size={26} /> },
+const skillGroups = [
+  {
+    title: "Frontend",
+    description: "Building responsive and performant UI.",
+    skills: [
+      { name: "React", level: 90 },
+      { name: "JavaScript", level: 85 },
+      { name: "Tailwind", level: 88 },
+    ],
+  },
+  {
+    title: "Backend",
+    description: "Designing scalable APIs and services.",
+    skills: [
+      { name: "Node.js", level: 85 },
+      { name: "Express", level: 80 },
+      { name: "Auth", level: 78 },
+    ],
+  },
+  {
+    title: "Database",
+    description: "Handling structured and NoSQL data.",
+    skills: [
+      { name: "MongoDB", level: 82 },
+      { name: "MySQL", level: 75 },
+      { name: "Data Modeling", level: 80 },
+    ],
+  },
+  {
+    title: "DevOps",
+    description: "Deploying and managing systems.",
+    skills: [
+      { name: "Docker", level: 75 },
+      { name: "AWS", level: 70 },
+      { name: "CI/CD", level: 72 },
+    ],
+  },
 ];
 
 export default function Skills() {
+  const [active, setActive] = useState(0);
+
   return (
-    <section
-      id="skills"
-      className="py-24 px-6 bg-gradient-to-b from-black via-slate-900 to-black"
-    >
-      <div className="max-w-6xl mx-auto text-center">
+    <section id="skills" className="px-6 py-24">
+      <div className="mx-auto max-w-6xl">
 
-        {/* Section Title */}
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold mb-14 text-white"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          My <span className="text-cyan-400">Skills</span>
-        </motion.h2>
+        {/* HEADER */}
+        <div className="max-w-2xl">
+          <p className="text-sm uppercase tracking-widest text-sky-400">
+            Skills
+          </p>
+          <h2 className="mt-4 text-3xl md:text-4xl font-bold text-white">
+            My technical capabilities
+          </h2>
+        </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
 
-          {skills.map((skill) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -6, scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="p-6 rounded-xl bg-neutral-900 border border-white/10 text-neutral-200 shadow-lg hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all flex flex-col items-center gap-3"
-            >
-              <div className="text-cyan-400">{skill.icon}</div>
-              <p className="font-medium">{skill.name}</p>
-            </motion.div>
-          ))}
+          {/* LEFT LIST */}
+          <div className="space-y-6">
+            {skillGroups.map((group, i) => (
+              <div
+                key={group.title}
+                onMouseEnter={() => setActive(i)}
+                className={`cursor-pointer transition ${
+                  active === i ? "text-white" : "text-slate-400"
+                }`}
+              >
+                <h3 className="text-lg font-semibold">{group.title}</h3>
+                <p className="text-sm">{group.description}</p>
+              </div>
+            ))}
+          </div>
 
+          {/* RIGHT PANEL */}
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            whileHover={{
+              rotateX: 3,
+              rotateY: -3,
+              scale: 1.02,
+            }}
+            className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl perspective-1000"
+          >
+            <h3 className="text-xl font-semibold text-white">
+              {skillGroups[active].title}
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-400">
+              {skillGroups[active].description}
+            </p>
+
+            {/* SKILL BARS */}
+            <div className="mt-6 space-y-5">
+              {skillGroups[active].skills.map((skill) => (
+                <div key={skill.name}>
+                  <div className="flex justify-between text-sm text-slate-300">
+                    <span>{skill.name}</span>
+                    <span>{skill.level}%</span>
+                  </div>
+
+                  <div className="mt-2 h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 0.8 }}
+                      className="h-full rounded-full bg-gradient-to-r from-sky-400 to-purple-400"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

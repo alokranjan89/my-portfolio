@@ -1,151 +1,145 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { ArrowUpRight, Github } from "lucide-react";
 
 const projects = [
   {
-    id: 2,
-    title: "Smart Attendance System",
-    desc:
-      "AI-powered attendance system with liveness detection using Python, OpenCV and Flask with Node.js microservices, MongoDB and Docker + Kubernetes CI/CD.",
-    tags: [
-      "Python",
-      "OpenCV",
-      "Flask",
-      "Node.js",
-      "MongoDB",
-      "Docker",
-      "Kubernetes",
-    ],
-    github: "https://github.com/alokranjan89/Smart-Attendance-System",
-    live: "https://smart-attendance-system32.vercel.app",
-  },
-  {
-    id: 3,
-    title: "QuickShow - Movie Ticket Booking",
-    desc:
-      "Full-stack MERN application for booking movie tickets with movie listings, seat selection, admin dashboard and secure REST APIs.",
-    tags: ["React", "Node.js", "Express", "MongoDB", "MERN"],
+    title: "QuickShow",
+    description:
+      "Movie booking platform with real-time seat locking and seamless user flow.",
     github: "https://github.com/alokranjan89/quickshow",
     live: "https://quickshow0.vercel.app",
+    tech: ["React", "Node", "MongoDB", "Docker"],
   },
   {
-    id: 5,
-    title: "Nightshield",
-    desc:
-      "Security-focused web application for monitoring suspicious activity and improving incident response with a clean, real-time dashboard experience.",
-    tags: ["React", "Node.js", "Express", "MongoDB", "Security"],
+    title: "Smart Attendance",
+    description:
+      "AI-powered attendance system using computer vision and backend services.",
+    github: "https://github.com/alokranjan89/Smart-Attendance-System",
+    live: "https://smart-attendance-system32.vercel.app",
+    tech: ["Python", "OpenCV", "Flask"],
+  },
+  {
+    title: "NightShield",
+    description:
+      "Security dashboard for monitoring alerts and real-time system activity.",
     github: "https://github.com/alokranjan89/nightshield",
     live: "https://nightshield08.vercel.app",
+    tech: ["React", "Node"],
   },
   {
-    id: 4,
-    title: "Sweet Shop Management System",
-    desc:
-      "MERN stack application to manage sweet inventory with add/update/delete sweets, category search, price management and stock tracking.",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
+    title: "Sweet Shop",
+    description:
+      "Inventory management system for tracking stock and operations.",
     github: "https://github.com/alokranjan89/sweet-shop-management",
-    live: "",
+    tech: ["MERN"],
   },
 ];
 
-const orderedProjects = [...projects].sort((a, b) => {
-  const aHasLive = Boolean(a.live);
-  const bHasLive = Boolean(b.live);
-  if (aHasLive === bHasLive) return a.id - b.id;
-  return bHasLive - aHasLive;
-});
-
 export default function Projects() {
+  const [active, setActive] = useState(0);
+
   return (
-    <section
-      id="projects"
-      className="py-20 px-6 bg-gradient-to-b from-black via-slate-900 to-black relative"
-    >
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="px-6 py-24">
+      <div className="mx-auto max-w-6xl">
 
-        {/* Title */}
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold text-center mb-14 text-white"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          My <span className="text-cyan-400">Projects</span>
-        </motion.h2>
-
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {orderedProjects.map((p) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -6 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="p-6 rounded-xl bg-neutral-900/70 border border-white/10 backdrop-blur-lg shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-400 transition-all"
-            >
-
-              {/* Title */}
-              <h3 className="text-xl font-bold text-cyan-400">
-                {p.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-neutral-300 mt-3 text-sm leading-relaxed">
-                {p.desc}
-              </p>
-
-              {/* Tags */}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-1 text-xs rounded-full bg-cyan-400/10 text-cyan-300 border border-cyan-300/30"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Buttons */}
-              <div className="mt-5 flex gap-3 flex-wrap">
-                <a
-                  href={p.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-3 py-2 text-sm rounded-lg border border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black transition flex items-center gap-2"
-                >
-                  <FaGithub />
-                  GitHub
-                </a>
-
-                {p.live && (
-                  <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-3 py-2 text-sm rounded-lg border border-purple-400 text-purple-300 hover:bg-purple-400 hover:text-black transition flex items-center gap-2"
-                  >
-                    <FaExternalLinkAlt />
-                    Live Demo
-                  </a>
-                )}
-
-                <a
-                  href="#contact"
-                  className="px-3 py-2 text-sm rounded-lg border border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black transition flex items-center gap-2"
-                >
-                  Contact
-                </a>
-              </div>
-
-            </motion.div>
-          ))}
+        {/* HEADER */}
+        <div className="max-w-2xl">
+          <p className="text-sm uppercase tracking-widest text-sky-400">
+            Projects
+          </p>
+          <h2 className="mt-4 text-3xl md:text-4xl font-bold text-white">
+            Work that reflects how I build products
+          </h2>
         </div>
 
+        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+
+          {/* LEFT LIST */}
+          <div className="space-y-6">
+            {projects.map((project, i) => (
+              <div
+                key={project.title}
+                onMouseEnter={() => setActive(i)}
+                className="relative cursor-pointer"
+              >
+                {/* ACTIVE LINE */}
+                {active === i && (
+                  <motion.div
+                    layoutId="activeLine"
+                    className="absolute -left-4 top-1 h-6 w-1 rounded-full bg-sky-400"
+                  />
+                )}
+
+                <h3
+                  className={`text-lg font-semibold transition ${
+                    active === i
+                      ? "text-white"
+                      : "text-slate-500 hover:text-white"
+                  }`}
+                >
+                  {project.title}
+                </h3>
+
+                <p className="mt-1 text-sm text-slate-400">
+                  {project.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT PANEL */}
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+          >
+            <h3 className="text-2xl font-semibold text-white">
+              {projects[active].title}
+            </h3>
+
+            <p className="mt-3 text-slate-400 leading-7">
+              {projects[active].description}
+            </p>
+
+            {/* TECH */}
+            <div className="mt-5 flex flex-wrap gap-2">
+              {projects[active].tech.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs bg-white/10 px-3 py-1 rounded-full text-slate-300"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* LINKS */}
+            <div className="mt-6 flex gap-4">
+              <a
+                href={projects[active].github}
+                target="_blank"
+                className="flex items-center gap-2 text-slate-400 hover:text-white transition"
+              >
+                <Github size={18} />
+                GitHub
+              </a>
+
+              {projects[active].live && (
+                <a
+                  href={projects[active].live}
+                  target="_blank"
+                  className="flex items-center gap-2 text-slate-400 hover:text-white transition"
+                >
+                  <ArrowUpRight size={18} />
+                  Live Demo
+                </a>
+              )}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

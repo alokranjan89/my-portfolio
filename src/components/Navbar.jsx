@@ -1,100 +1,162 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import profile from "../assets/profile.jpeg";
 
+const sections = ["home", "about", "projects", "skills", "contact"];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateActive = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.3;
+      let current = "home";
+
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+
+        if (scrollPosition >= section.offsetTop) {
+          current = id;
+        }
+      });
+
+      setActive(current);
+      setScrolled(window.scrollY > 20);
+    };
+
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    return () => window.removeEventListener("scroll", updateActive);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md border-b border-white/10">
-      
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#09090f]/80 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
 
-        {/* LOGO */}
-        <div className="flex items-center gap-3">
-
-          <a href="#home">
+        {/* 🔥 LOGO */}
+        <a href="#home" className="flex items-center gap-3 group">
+          <div className="relative">
             <img
               src={profile}
-              alt="Alok Ranjan"
-              className="w-10 h-10 rounded-full border-2 border-cyan-400 shrink-0 hover:scale-110 transition duration-300"
+              alt="Alok"
+              className="h-10 w-10 rounded-xl object-cover border border-white/10 transition group-hover:scale-105"
             />
-          </a>
+            <div className="absolute inset-0 rounded-xl bg-sky-400/20 opacity-0 group-hover:opacity-100 blur-md transition" />
+          </div>
 
-          <a
-            href="#home"
-            className="text-lg font-bold text-white whitespace-nowrap hover:text-cyan-400 transition duration-300"
-          >
-            Alok<span className="text-cyan-400">Dev</span>
-          </a>
+          <div className="leading-tight">
+            <p className="text-sm font-semibold text-white">Alok Ranjan</p>
+            <p className="text-xs text-slate-400">Software Engineer</p>
+          </div>
+        </a>
 
-        </div>
+        {/* 🔥 NAV LINKS */}
+        <nav className="hidden md:flex items-center gap-8">
+          {sections.map((item) => {
+            const label = item.charAt(0).toUpperCase() + item.slice(1);
+            const isActive = active === item;
 
-        {/* DESKTOP MENU */}
-        <nav className="hidden md:flex items-center gap-8 text-gray-300 font-medium">
+            return (
+              <a
+                key={item}
+                href={`#${item}`}
+                className="relative px-2 py-1 text-sm font-medium"
+              >
+                {/* TEXT */}
+                <span
+                  className={`transition ${
+                    isActive
+                      ? "text-white"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </span>
 
-          {["Home","About","Projects","Skills","Contact"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="relative hover:text-cyan-400 transition duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {item}
-            </a>
-          ))}
+                {/* 🔥 ANIMATED UNDERLINE */}
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-underline"
+                    className="absolute left-0 right-0 -bottom-1 h-[2px] rounded-full bg-sky-400"
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 30,
+                    }}
+                  />
+                )}
+              </a>
+            );
+          })}
+        </nav>
 
+        {/* 🔥 CTA */}
+        <div className="hidden md:block">
           <a
             href="/Alok_Ranjan_Resume.pdf"
             download
-            className="ml-4 px-5 py-2 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/30"
+            className="rounded-xl border border-white/15 px-4 py-2 text-sm text-white transition hover:bg-white/10"
           >
             Resume
           </a>
+        </div>
 
-        </nav>
-
-        {/* MOBILE MENU BUTTON */}
+        {/* 🔥 MOBILE BUTTON */}
         <button
-          type="button"
-          className="md:hidden text-white"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
           onClick={() => setOpen(!open)}
+          className="md:hidden rounded-xl border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 active:scale-95"
         >
-          {open ? <X size={28} /> : <Menu size={28} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* MOBILE MENU */}
-      {open && (
-        <div
-          id="mobile-menu"
-          className="md:hidden bg-black/95 border-t border-white/10 px-6 py-6 space-y-5 text-center"
-        >
-
-          {["Home","About","Projects","Skills","Contact"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setOpen(false)}
-              className="block text-gray-300 hover:text-cyan-400 text-lg transition"
-            >
-              {item}
-            </a>
-          ))}
-
-          <a
-            href="/Alok_Ranjan_Resume.pdf"
-            download
-            onClick={() => setOpen(false)}
-            className="block mt-4 px-5 py-2 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
+      {/* 🔥 MOBILE MENU */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden border-t border-white/10 bg-[#09090f]/95 backdrop-blur-xl"
           >
-            Download Resume
-          </a>
+            <div className="flex flex-col gap-4 px-6 py-6">
+              {sections.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  onClick={() => setOpen(false)}
+                  className={`text-base font-medium ${
+                    active === item
+                      ? "text-white"
+                      : "text-slate-400"
+                  }`}
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </a>
+              ))}
 
-        </div>
-      )}
+              <a
+                href="/Alok_Ranjan_Resume.pdf"
+                download
+                className="mt-4 rounded-xl border border-white/15 px-4 py-3 text-center text-white transition hover:bg-white/10"
+              >
+                Download Resume
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

@@ -1,88 +1,144 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ArrowRight, Download } from "lucide-react";
 
-const TITLES = [
-  "Software Developer",
-  "AI & Full-Stack Developer",
-  "Machine Learning Engineer",
-  "Cloud & DevOps Practitioner",
-];
+const badges = ["React", "Node.js", "Express", "MongoDB", "Docker"];
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentText = TITLES[index];
-    const speed = isDeleting ? 50 : 100;
-
-    const timer = setTimeout(() => {
-      setDisplayText(
-        isDeleting
-          ? currentText.substring(0, displayText.length - 1)
-          : currentText.substring(0, displayText.length + 1)
-      );
-
-      if (!isDeleting && displayText === currentText) {
-        setTimeout(() => setIsDeleting(true), 1200);
-      } else if (isDeleting && displayText === "") {
-        setIsDeleting(false);
-        setIndex((prev) => (prev + 1) % TITLES.length);
-      }
-    }, speed);
-
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index]);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-black via-slate-900 to-black"
+      onMouseMove={(e) => {
+        const { clientX, clientY } = e;
+        setPos({ x: clientX, y: clientY });
+      }}
+      className="relative overflow-hidden px-6 pb-20 pt-32 md:pt-40"
     >
-      {/* Soft glow background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-40 left-1/2 w-[500px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full -translate-x-1/2"></div>
-      </div>
 
-      <div className="max-w-4xl px-6 text-center z-10">
-        {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
+      {/* 🔥 MOUSE SPOTLIGHT */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background: `radial-gradient(600px at ${pos.x}px ${pos.y}px, rgba(56,189,248,0.15), transparent 40%)`,
+        }}
+      />
+
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#0b0d14] to-[#09090f]" />
+
+      <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+
+        {/* LEFT */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-extrabold"
+          transition={{ duration: 0.6 }}
         >
-          <span className="text-white">Hi, I'm </span>
-
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
-            Alok Ranjan
+          <span className="text-sm tracking-widest text-sky-400 uppercase">
+            Software Engineer • MERN • AI
           </span>
-        </motion.h1>
 
-        {/* Typing text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-6 text-xl text-gray-300"
-        >
-          I build intelligent applications using{" "}
-          <span className="text-cyan-400 font-semibold">
-            {displayText}|
-          </span>
-        </motion.p>
+          <h1 className="mt-6 text-4xl md:text-5xl font-bold leading-tight text-white">
+            Building scalable{" "}
+            <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
+              full-stack products
+            </span>{" "}
+            with clean design.
+          </h1>
 
-        {/* Button */}
-        <motion.a
-          href="#projects"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1 }}
-          className="inline-block mt-10 px-8 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/30"
+          <p className="mt-6 max-w-xl text-lg text-slate-400">
+            I build fast, scalable web apps that solve real problems and feel
+            great to use.
+          </p>
+
+          {/* BADGES */}
+          <div className="mt-8 flex flex-wrap gap-3">
+            {badges.map((b) => (
+              <span
+                key={b}
+                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 backdrop-blur hover:bg-white/10 transition"
+              >
+                {b}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-10 flex gap-4">
+            <a
+              href="#projects"
+              className="group flex items-center gap-2 rounded-xl bg-sky-500 px-6 py-3 font-medium text-white transition hover:bg-sky-400 hover:shadow-xl hover:shadow-sky-500/30"
+            >
+              See My Work
+              <ArrowRight
+                size={18}
+                className="transition group-hover:translate-x-1"
+              />
+            </a>
+
+            <a
+              href="/Alok_Ranjan_Resume.pdf"
+              download
+              className="group flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 text-white transition hover:bg-white/10"
+            >
+              Resume
+              <Download size={18} className="group-hover:scale-110" />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* RIGHT */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="relative"
         >
-          View My Work
-        </motion.a>
+
+          {/* glow */}
+          <div className="absolute inset-0 rounded-[30px] bg-gradient-to-r from-sky-500/20 to-purple-500/20 blur-xl" />
+
+          <div className="relative rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+
+            {/* dots */}
+            <div className="flex gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+              <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
+              <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+            </div>
+
+            <div className="mt-6 space-y-4">
+
+              <div className="rounded-xl bg-black/40 p-5">
+                <p className="text-xs text-sky-400 uppercase">Focus</p>
+                <h3 className="mt-2 text-xl font-semibold text-white">
+                  Product-driven development
+                </h3>
+                <p className="mt-2 text-sm text-slate-400">
+                  Clean UI, scalable backend, real-world systems.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-xl bg-black/30 p-4">
+                  <p className="text-xs text-slate-500">Goal</p>
+                  <p className="text-white font-semibold mt-1">
+                    SDE / Internship
+                  </p>
+                </div>
+
+                <div className="rounded-xl bg-black/30 p-4">
+                  <p className="text-xs text-slate-500">Strength</p>
+                  <p className="text-white font-semibold mt-1">
+                    Full-stack systems
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

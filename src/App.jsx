@@ -9,29 +9,17 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen text-white">
-
-      {/* Navbar */}
+    <div className="min-h-screen">
+      <div className="surface-grid" />
       <Navbar />
-
-      {/* Main Content */}
-      <main className="flex flex-col">
-
+      <main>
         <Hero />
-
         <About />
-
         <Projects />
-
         <Skills />
-
         <Contact />
-
       </main>
-
-      {/* Footer */}
       <Footer />
-
     </div>
   );
 }
