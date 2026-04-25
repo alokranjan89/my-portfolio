@@ -24,7 +24,7 @@ const projects = [
     description:
       "Security dashboard for monitoring alerts and real-time system activity.",
     github: "https://github.com/alokranjan89/nightshield",
-    live: "https://nightshield08.vercel.app",
+    live: "https://nightshield09.vercel.app",
     tech: ["React", "Node"],
   },
   {
