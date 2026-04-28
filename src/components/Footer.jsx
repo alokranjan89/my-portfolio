@@ -22,7 +22,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-sm text-slate-500 text-center md:text-left"
         >
-          © {new Date().getFullYear()}{" "}
+          &copy; {new Date().getFullYear()}{" "}
           <span className="text-white font-medium">Alok Ranjan</span>.  
           Built with React, Tailwind & Framer Motion.
         </motion.p>

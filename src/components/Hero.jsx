@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 
-const badges = ["React", "Node.js", "Express", "MongoDB", "Docker"];
+const badges = ["React", "Node.js", "Express", "MongoDB", "PostgreSQL", "Docker"];
 
 export default function Hero() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -37,7 +37,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-sm tracking-widest text-sky-400 uppercase">
-            Software Engineer • MERN • AI
+            Software Engineer | MERN | AI
           </span>
 
           <h1 className="mt-6 text-4xl md:text-5xl font-bold leading-tight text-white">
@@ -49,8 +49,8 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg text-slate-400">
-            I build fast, scalable web apps that solve real problems and feel
-            great to use.
+            I build full-stack web apps with clean interfaces, scalable APIs,
+            and real product workflows across React, Node.js, and databases.
           </p>
 
           {/* BADGES */}
@@ -66,12 +66,12 @@ export default function Hero() {
           </div>
 
           {/* CTA */}
-          <div className="mt-10 flex gap-4">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
               href="#projects"
               className="group flex items-center gap-2 rounded-xl bg-sky-500 px-6 py-3 font-medium text-white transition hover:bg-sky-400 hover:shadow-xl hover:shadow-sky-500/30"
             >
-              See My Work
+              View Projects
               <ArrowRight
                 size={18}
                 className="transition group-hover:translate-x-1"
@@ -83,7 +83,7 @@ export default function Hero() {
               download
               className="group flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 text-white transition hover:bg-white/10"
             >
-              Resume
+              Download Resume
               <Download size={18} className="group-hover:scale-110" />
             </a>
           </div>

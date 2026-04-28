@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import profile from "../assets/profile.jpeg";
 
-const sections = ["home", "about", "projects", "skills", "contact"];
+const sections = ["home", "about", "experience", "projects", "skills", "contact"];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -114,6 +114,8 @@ export default function Navbar() {
         {/* 🔥 MOBILE BUTTON */}
         <button
           onClick={() => setOpen(!open)}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={open}
           className="md:hidden rounded-xl border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 active:scale-95"
         >
           {open ? <X size={22} /> : <Menu size={22} />}

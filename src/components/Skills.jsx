@@ -44,7 +44,9 @@ export default function Skills() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="skills" className="px-6 py-24">
+    <section id="skills" className="relative px-6 py-24">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_30%,rgba(163,230,53,0.07),transparent_42%)]" />
+
       <div className="mx-auto max-w-6xl">
 
         {/* HEADER */}
@@ -62,16 +64,21 @@ export default function Skills() {
           {/* LEFT LIST */}
           <div className="space-y-6">
             {skillGroups.map((group, i) => (
-              <div
+              <button
+                type="button"
                 key={group.title}
                 onMouseEnter={() => setActive(i)}
-                className={`cursor-pointer transition ${
-                  active === i ? "text-white" : "text-slate-400"
+                onFocus={() => setActive(i)}
+                onClick={() => setActive(i)}
+                className={`w-full cursor-pointer rounded-2xl border p-4 text-left transition ${
+                  active === i
+                    ? "border-sky-400/35 bg-sky-500/10 text-white"
+                    : "border-white/10 bg-white/5 text-slate-400 hover:bg-white/10"
                 }`}
               >
                 <h3 className="text-lg font-semibold">{group.title}</h3>
                 <p className="text-sm">{group.description}</p>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -110,7 +117,7 @@ export default function Skills() {
                       initial={{ width: 0 }}
                       animate={{ width: `${skill.level}%` }}
                       transition={{ duration: 0.8 }}
-                      className="h-full rounded-full bg-gradient-to-r from-sky-400 to-purple-400"
+                      className="h-full rounded-full bg-gradient-to-r from-sky-400 to-lime-300"
                     />
                   </div>
                 </div>

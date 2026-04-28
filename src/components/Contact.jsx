@@ -46,7 +46,7 @@ export default function Contact() {
 
           {/* 🔥 STRONG CTA */}
           <h2 className="mt-6 text-3xl md:text-4xl font-bold text-white leading-tight">
-            Let’s build something{" "}
+            Let's build something{" "}
             <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
               impactful
             </span>{" "}
