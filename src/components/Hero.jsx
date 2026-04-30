@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 
-const badges = ["React", "Node.js", "Express", "MongoDB", "PostgreSQL", "Docker"];
+const badges = ["React", "Node.js", "WebSockets", "MongoDB", "PostgreSQL", "Docker"];
 
 export default function Hero() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -37,20 +37,21 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-sm tracking-widest text-sky-400 uppercase">
-            Software Engineer | MERN | AI
+            Fresher Full-Stack Developer | MERN | APIs
           </span>
 
           <h1 className="mt-6 text-4xl md:text-5xl font-bold leading-tight text-white">
-            Building scalable{" "}
+            I build practical{" "}
             <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
-              full-stack products
+              full-stack projects
             </span>{" "}
-            with clean design.
+            with clean UI and backend logic.
           </h1>
 
           <p className="mt-6 max-w-xl text-lg text-slate-400">
-            I build full-stack web apps with clean interfaces, scalable APIs,
-            and real product workflows across React, Node.js, and databases.
+            I am a fresher focused on React, Node.js, Express, and databases,
+            with hands-on projects in booking flows, alert dashboards,
+            authentication, REST APIs, WebSockets, and Docker basics.
           </p>
 
           {/* BADGES */}
@@ -114,10 +115,10 @@ export default function Hero() {
               <div className="rounded-xl bg-black/40 p-5">
                 <p className="text-xs text-sky-400 uppercase">Focus</p>
                 <h3 className="mt-2 text-xl font-semibold text-white">
-                  Product-driven development
+                  Full-stack project development
                 </h3>
                 <p className="mt-2 text-sm text-slate-400">
-                  Clean UI, scalable backend, real-world systems.
+                  React interfaces, Node.js APIs, authentication, database models, and deployment practice.
                 </p>
               </div>
 
@@ -132,7 +133,7 @@ export default function Hero() {
                 <div className="rounded-xl bg-black/30 p-4">
                   <p className="text-xs text-slate-500">Strength</p>
                   <p className="text-white font-semibold mt-1">
-                    Full-stack systems
+                    MERN + APIs
                   </p>
                 </div>
               </div>

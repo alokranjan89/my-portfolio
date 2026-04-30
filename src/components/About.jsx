@@ -4,10 +4,10 @@ import { CheckCircle2 } from "lucide-react";
 import profilePic from "../assets/profile.jpeg";
 
 const points = [
-  "Build full-stack apps using React, Node.js, Express, MongoDB.",
-  "Focus on clean UI, scalable APIs, and practical system design.",
-  "Hands-on experience in booking systems, dashboards, and real-world apps.",
-  "Actively seeking internship / entry-level SDE roles.",
+  "Built project features using WebSockets for SOS alerts, live updates, and booking-related workflows.",
+  "Created REST APIs with authentication, validation, error handling, and database persistence.",
+  "Practiced with MongoDB, PostgreSQL, MySQL, Redis, Docker, and deployment tools through projects and internship work.",
+  "Looking for SDE / internship roles where I can contribute, learn fast, and grow as a full-stack developer.",
 ];
 
 export default function About() {
@@ -52,9 +52,9 @@ export default function About() {
           </span>
 
           <h2 className="mt-6 text-3xl md:text-4xl font-bold text-white leading-tight">
-            I build products that are{" "}
+            I enjoy building useful apps with{" "}
             <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
-              scalable, clean, and useful
+              clean interfaces and solid backend basics
             </span>
           </h2>
 
@@ -62,7 +62,7 @@ export default function About() {
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur">
               <p className="text-xs text-slate-500">Focus</p>
-              <p className="text-white font-semibold mt-1">Full-Stack Systems</p>
+              <p className="text-white font-semibold mt-1">MERN Projects</p>
             </div>
 
             <div className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur">

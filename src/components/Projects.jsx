@@ -7,6 +7,8 @@ const projects = [
     title: "NightShield",
     description:
       "Security dashboard for monitoring alerts and real-time system activity.",
+    highlight:
+      "Implemented WebSocket updates, location-aware alert handling, JWT/Clerk auth, and responder-focused dashboard flows.",
     details: [
       "Built a real-time SOS alert system with location-aware alert handling and responder-focused workflows.",
       "Used WebSockets for live status updates so critical activity appears without manual refresh.",
@@ -20,6 +22,8 @@ const projects = [
     title: "QuickShow",
     description:
       "Movie booking platform with real-time seat locking and seamless user flow.",
+    highlight:
+      "Practiced real booking logic with seat locking, MongoDB persistence, REST APIs, validation, and Docker Compose setup.",
     details: [
       "Built a full booking flow where users can browse movies, choose shows, select seats, and complete reservations.",
       "Implemented real-time seat locking to reduce double-booking during concurrent booking sessions.",
@@ -33,6 +37,8 @@ const projects = [
     title: "StyleHubs",
     description:
       "Fashion storefront for browsing modern clothing collections and product categories.",
+    highlight:
+      "Built responsive ecommerce pages with product sections, category browsing, clear CTAs, and Vercel deployment.",
     details: [
       "Designed a clean shopping experience for fashion categories, featured products, and collection browsing.",
       "Built responsive product sections so visitors can explore clothing and accessories across screen sizes.",
@@ -45,6 +51,8 @@ const projects = [
     title: "Smart Attendance",
     description:
       "AI-powered attendance system using computer vision and backend services.",
+    highlight:
+      "Explored Python, OpenCV, Flask, REST APIs, Docker, face recognition, and liveness detection in a practical workflow.",
     details: [
       "Created an attendance workflow that uses computer vision to identify users and mark attendance faster.",
       "Connected the recognition pipeline with backend routes for storing and retrieving attendance records.",
@@ -71,7 +79,7 @@ export default function Projects() {
             Projects
           </p>
           <h2 className="mt-4 text-3xl md:text-4xl font-bold text-white">
-            Work that reflects how I build products
+            Projects where I practiced real product workflows
           </h2>
         </div>
 
@@ -143,6 +151,15 @@ export default function Projects() {
             <p className="mt-3 text-slate-400 leading-7">
               {projects[active].description}
             </p>
+
+            <div className="mt-5 rounded-xl border border-sky-400/20 bg-sky-500/10 p-4">
+              <p className="text-xs uppercase tracking-widest text-sky-300">
+                Technical highlight
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-200">
+                {projects[active].highlight}
+              </p>
+            </div>
 
             <div className="mt-6 space-y-3">
               {projects[active].details.map((detail) => (
